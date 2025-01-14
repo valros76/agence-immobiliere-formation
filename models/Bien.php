@@ -166,6 +166,23 @@ class Bien{
     return $req->execute();
   }
 
+  public static function getList(){
+    $req = self::$bdd->prepare("SELECT * FROM biens ORDER BY id DESC");
+    $req->execute();
+    $datas = $req->fetchAll(PDO::FETCH_OBJ);
+    $req->closeCursor();
+    return $datas;
+  }
+
+  public static function getById(int $id){
+    $req = self::$bdd->prepare("SELECT * FROM biens WHERE id=:id");
+    $req->bindValue(":id", $id, PDO::PARAM_INT);
+    $req->execute();
+    $data = $req->fetch(PDO::FETCH_OBJ);
+    $req->closeCursor();
+    return $data;
+  }
+
   private static function setBdd($bdd){
     self::$bdd = $bdd;
   }

@@ -8,29 +8,22 @@ spl_autoload_register(function ($class) {
   }
 });
 
+$bien = new Bien(BDD::connect());
+$biensList = $bien::getList();
+$firstBien = $bien::getById(1);
+
 require_once "./views/home.php";
 require_once "./templates/global_template.php";
 
-$bien = new Bien(BDD::connect());
-$bien::add(
-  title: "Huntsman's Harbour",
-  price: 215000,
-  price_type: "TTC",
-  offer: "achat",
-  image: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-771540516262842487/original/2c9354ff-c3ac-471b-a265-3a20b5228528.jpeg?im_w=1200&im_format=avif",
-  location: "Lancashire, Angleterre, Royaume-Uni",
-  nb_rooms: 1,
-  nb_beds: 1,
-  nb_bathrooms: 1,
-  equipments: ""
-);
-
-
-/**
- * Liste de propriétés
- * Détails/Annonces de biens
- * Bonus : Filtres
- * Menu de navigation
- * Acceuil / À propos / Contact
- * Bonus : Utilisateurs
- */
+// $bien::add(
+//   title: "Huntsman's Harbour",
+//   price: 215000,
+//   price_type: "TTC",
+//   offer: "achat",
+//   image: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-771540516262842487/original/2c9354ff-c3ac-471b-a265-3a20b5228528.jpeg?im_w=1200&im_format=avif",
+//   location: "Lancashire, Angleterre, Royaume-Uni",
+//   nb_rooms: 1,
+//   nb_beds: 1,
+//   nb_bathrooms: 1,
+//   equipments: ""
+// );

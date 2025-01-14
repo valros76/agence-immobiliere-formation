@@ -14,6 +14,14 @@ ob_start();
   </article>
 </section>
 
+<section class="card-sections">
+  <article class="card-articles">
+    <a href="#" class="card-links">
+      <img loading="lazy" src="<?= $firstBien->image ?>" alt="<?= $firstBien->title ?>" class="card-image" width="1920" height="1080">
+    </a>
+  </article>
+</section>
+
 <!-- <?php include_once "views/fragments/biens-grid.php" ?> -->
 
 <?php
