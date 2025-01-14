@@ -14,7 +14,7 @@ ob_start();
   </article>
 </section>
 
-<?php include_once "views/fragments/biens-grid.php" ?>
+<!-- <?php include_once "views/fragments/biens-grid.php" ?> -->
 
 <?php
 $mainContent = ob_get_clean();
