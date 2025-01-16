@@ -69,6 +69,10 @@ a:visited{
   &:hover{
     color:var(--color-blue-light);
   }
+
+  &:is(.invisible-link){
+    color:inherit;
+  }
 }
 
 img {

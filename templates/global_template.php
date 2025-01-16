@@ -9,7 +9,7 @@
 <body>
   <header class="main-head">
     <h1 class="main-head-title">
-      <?= $mainTitle ?? "Agence IPSSI" ?>
+      <a href="/" class="invisible-link"><?= $mainTitle ?? "Agence IPSSI" ?></a>
     </h1>
   </header>
 
