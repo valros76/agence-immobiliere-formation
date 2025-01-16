@@ -5,7 +5,7 @@
       <?= $cardTitle ?>
     </h2>
     <p>
-      <span class="card-price"><?= $cardPrice ?></span> <span class="card-price-description"><?= $cardPriceType ?></span>
+      <span class="card-price"><?= $cardPrice ?>€</span> <span class="card-price-description"><?= $cardPriceDescription ?></span>
     </p>
   </a>
 </article>

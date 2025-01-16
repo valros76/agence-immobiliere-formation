@@ -15,14 +15,19 @@ ob_start();
 </section>
 
 <section class="card-sections">
-  <article class="card-articles">
-    <a href="#" class="card-links">
-      <img loading="lazy" src="<?= $firstBien->image ?>" alt="<?= $firstBien->title ?>" class="card-image" width="1920" height="1080">
-    </a>
-  </article>
+  <?php 
+  foreach($biensList as $key=>$bien):
+    $cardLink = "/bien?id={$bien->id}";
+    $cardTitle = $bien->title;
+    $cardImage = $bien->image;
+    $cardPrice = $bien->price;
+    $cardPriceType = $bien->price_type;
+    include "views/fragments/card.php";
+  endforeach; 
+  ?>
 </section>
 
-<!-- <?php include_once "views/fragments/biens-grid.php" ?> -->
+<!-- <?php include_once "views/fragments/archive/biens-grid.php" ?> -->
 
 <?php
 $mainContent = ob_get_clean();

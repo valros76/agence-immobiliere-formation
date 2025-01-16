@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $headTitle ?? "Agence immobilière" ?></title>
-  <link rel="stylesheet" href="sources/css/global.css">
+  <link rel="stylesheet" href="/sources/css/global.css">
 </head>
 <body>
   <header class="main-head">
@@ -22,5 +22,7 @@
   <footer class="main-foot">
     <p class="copyright">© Webdevoo - 2025</p>
   </footer>
+
+  <?= $addScripts ?? null ?>
 </body>
 </html>

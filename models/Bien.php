@@ -183,6 +183,39 @@ class Bien{
     return $data;
   }
 
+  public static function update(
+    int $id,
+    string $title,
+    int $price,
+    string $price_type,
+    string $offer,
+    string $image,
+    string $location,
+    int $nb_rooms,
+    int $nb_beds,
+    int $nb_bathrooms,
+    string $equipments
+  ){
+    $req = self::$bdd->prepare("UPDATE biens SET title=:title, price=:price, price_type=:price_type, offer=:offer, image=:image, location=:location, nb_rooms=:nb_rooms, nb_beds=:nb_beds, nb_bathrooms=:nb_bathrooms, equipments=:equipments WHERE id=:id");
+    $req->bindValue(":id", $id, PDO::PARAM_INT);
+    $req->bindValue(":title", $title, PDO::PARAM_STR);
+    $req->bindValue(":price", $price, PDO::PARAM_INT);
+    $req->bindValue(":price_type", $price_type, PDO::PARAM_STR);
+    $req->bindValue(":offer", $offer, PDO::PARAM_STR);
+    $req->bindValue(":image", $image, PDO::PARAM_STR);
+    $req->bindValue(":location", $location, PDO::PARAM_STR);
+    $req->bindValue(":nb_rooms", $nb_rooms, PDO::PARAM_INT);
+    $req->bindValue(":nb_beds", $nb_beds, PDO::PARAM_INT);
+    $req->bindValue(":nb_bathrooms", $nb_bathrooms, PDO::PARAM_INT);
+    $req->bindValue(":equipments", $equipments, PDO::PARAM_STR);
+    
+    return $req->execute();
+  }
+
+  public static function deleteById(int $id){
+    return self::$bdd->exec("DELETE FROM biens WHERE id={$id}");
+  }
+
   private static function setBdd($bdd){
     self::$bdd = $bdd;
   }
