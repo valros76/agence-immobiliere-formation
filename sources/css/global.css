@@ -198,6 +198,7 @@ img {
 }
 
 form{
+  min-width:30dvw;
   width:max-content;
   display:inline-flex;
   flex-direction:column;
@@ -205,6 +206,10 @@ form{
   align-items:stretch;
   gap:.4rem;
   padding:1.2rem;
+}
+
+form input:not([type="submit"]){
+  padding:.2rem .4rem;
 }
 
 form button[type="submit"]{

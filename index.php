@@ -34,6 +34,9 @@ try {
       case ($uri === "/biens/add"):
         $router->getRoute("Bien", "add");
         break;
+      case ($uri === "/bien/update/done"):
+        $router->getRoute("Bien", "updateDone");
+        break;
       default:
         throw new Exception("La route est inconnue en méthode GET.");
     }
@@ -47,6 +50,9 @@ try {
       case ($uri === "/bien/update"):
         $router->getRoute("Bien", "update");
         break;
+        case ($uri === "/bien/update/save"):
+          $router->getRoute("Bien", "updateIntoBDD");
+          break;
       case ($uri === "/biens/delete"):
         $router->getRoute("Bien", "delete");
         break;

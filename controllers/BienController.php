@@ -116,12 +116,17 @@ class BienController
 
     $bien = new Bien(BDD::connect());
     if($bien::update($id, $title, $price, $price_type, $offer, $image, $location, $nb_rooms, $nb_beds, $nb_bathrooms, $equipments ) != false){
-      header("Location:/");
+      header("Location:/bien/update/done");
       exit;
     }else{
       header("Location:/biens/update");
       exit;
     }
+  }
+
+  public static function updateDone(){
+    require_once "views/update_bien_done.php";
+    require_once "templates/global_template.php";
   }
 
   public static function delete(){

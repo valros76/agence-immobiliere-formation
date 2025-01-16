@@ -9,7 +9,7 @@ ob_start();
     Modifier le bien
   </h2>
   
-  <form action="/bien/update" method="POST">
+  <form action="/bien/update/save" method="POST">
     <label for="title">Nom / Titre</label>
     <input type="text" value="<?= $actualBien->title ?>" name="title" required />
 
@@ -46,6 +46,8 @@ ob_start();
 
     <label for="equipments">Équipements disponibles dans le bien (optionnel)</label>
     <textarea name="equipments"><?= $actualBien->equipments ?></textarea>
+
+    <input type="hidden" value="<?= $actualBien->id ?>" name="id">
 
     <button type="submit">Modifier</button>
   </form>

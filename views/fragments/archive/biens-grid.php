@@ -1,3 +1,3 @@
 <section class="card-sections">
-  <?php include_once "views/fragments/card-list.php" ?>
+  <?php include_once "views/fragments/archive/card-list.php" ?>
 </section>
