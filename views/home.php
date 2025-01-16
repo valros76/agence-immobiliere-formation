@@ -8,9 +8,10 @@ ob_start();
     <h2 class="main-articles-title">
       Mon bien immobilier
     </h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, fuga eligendi voluptatibus nobis maiores assumenda!
-    </p>
+    
+    <form action="/biens/add" method="GET">
+      <button type="submit">Ajouter un bien</button>
+    </form>
   </article>
 </section>
 

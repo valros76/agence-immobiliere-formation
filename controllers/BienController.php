@@ -87,6 +87,43 @@ class BienController
     require_once "templates/global_template.php";
   }
 
+  public static function update(){
+    $id = $_POST["id"] ?? null;
+    if($id === null){
+      header("Location:/");
+      exit;
+    }
+
+    $bien = new Bien(BDD::connect());
+    $actualBien = $bien::getById($id);
+
+    require_once "views/update_bien.php";
+    require_once "templates/global_template.php";
+  }
+
+  public static function updateIntoBDD(){
+    $id = $_POST["id"] ?? null;
+    $title = $_POST["title"] ?? null;
+    $price = $_POST["price"] ?? null;
+    $price_type = $_POST["price_type"] ?? null;
+    $offer = $_POST["offer"] ?? null;
+    $image = $_POST["image"] ?? null;
+    $location = $_POST["location"] ?? null;
+    $nb_rooms = $_POST["nb_rooms"] ?? null;
+    $nb_beds = $_POST["nb_beds"] ?? null;
+    $nb_bathrooms = $_POST["nb_bathrooms"] ?? null;
+    $equipments = $_POST["equipments"] ?? null;
+
+    $bien = new Bien(BDD::connect());
+    if($bien::update($id, $title, $price, $price_type, $offer, $image, $location, $nb_rooms, $nb_beds, $nb_bathrooms, $equipments ) != false){
+      header("Location:/");
+      exit;
+    }else{
+      header("Location:/biens/update");
+      exit;
+    }
+  }
+
   public static function delete(){
     $id = $_POST["id"] ?? null;
     

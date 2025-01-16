@@ -19,7 +19,7 @@ try {
   $router = new Router($uri, $method);
 
   $uri = str_replace("?", "", $uri);
-  if($queryString != null){
+  if ($queryString != null) {
     $uri = str_replace($queryString, "", $uri);
   }
 
@@ -29,9 +29,6 @@ try {
         $router->getRoute("Bien", "index");
         break;
       case ($uri === "/bien"):
-        /**
-         * Objectif : Obtenir un index "queryString" à la place de l'index "0" du tableau params, dans la méthode getRoute.
-         */
         $router->getRoute("Bien", "show", ["queryString" => $queryString]);
         break;
       case ($uri === "/biens/add"):
@@ -46,6 +43,9 @@ try {
     switch (true) {
       case ($uri === "/biens/add"):
         $router->getRoute("Bien", "push");
+        break;
+      case ($uri === "/bien/update"):
+        $router->getRoute("Bien", "update");
         break;
       case ($uri === "/biens/delete"):
         $router->getRoute("Bien", "delete");
