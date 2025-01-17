@@ -3,15 +3,17 @@ class Router{
 
   private static string $uri;
   private static string $method;
+  private static ?string $queryString;
 
-  public function __construct($uri = null, $method = "GET"){
+  public function __construct($uri = null, $method = "GET", $queryString = null){
     $method = strtoupper($method);
 
     self::$uri = $uri === null ? "/" : $uri;
     self::$method = $method;
+    self::$queryString = $queryString ?? null;
   }
 
-  public function getRoute($controller, $action, $params = null){
+  public function getRoute($controller, $action){
     $controller = ucfirst($controller);
 
     if(!str_contains($controller, "Controller")){
@@ -22,7 +24,7 @@ class Router{
       if(class_exists($controller)){
         $actualController = new $controller();
         if(method_exists($controller, $action)){
-          $actualController->{$action}($params["queryString"] ??null);
+          $actualController->{$action}(self::$queryString);
         }else{
           throw new Exception("L'action n'existe pas.");
         }

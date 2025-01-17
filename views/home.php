@@ -28,7 +28,5 @@ ob_start();
   ?>
 </section>
 
-<!-- <?php include_once "views/fragments/archive/biens-grid.php" ?> -->
-
 <?php
 $mainContent = ob_get_clean();

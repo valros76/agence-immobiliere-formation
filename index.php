@@ -16,52 +16,41 @@ try {
   $uri = $_SERVER["REQUEST_URI"];
   $method = $_SERVER["REQUEST_METHOD"] ?? "GET";
   $queryString = $_SERVER["QUERY_STRING"] ?? null;
-  $router = new Router($uri, $method);
+  $router = new Router($uri, $method, $queryString);
 
   $uri = str_replace("?", "", $uri);
   if ($queryString != null) {
     $uri = str_replace($queryString, "", $uri);
   }
 
-  if ($method === "GET") {
-    switch (true) {
-      case ($uri === "/"):
-        $router->getRoute("Bien", "index");
-        break;
-      case ($uri === "/bien"):
-        $router->getRoute("Bien", "show", ["queryString" => $queryString]);
-        break;
-      case ($uri === "/biens/add"):
-        $router->getRoute("Bien", "add");
-        break;
-      case ($uri === "/bien/update/done"):
-        $router->getRoute("Bien", "updateDone");
-        break;
-      default:
-        throw new Exception("La route est inconnue en méthode GET.");
-    }
-  }
-
-  if ($method === "POST") {
-    switch (true) {
-      case ($uri === "/biens/add"):
-        $router->getRoute("Bien", "push");
-        break;
-      case ($uri === "/bien/update"):
-        $router->getRoute("Bien", "update");
-        break;
-        case ($uri === "/bien/update/save"):
-          $router->getRoute("Bien", "updateIntoBDD");
-          break;
-      case ($uri === "/biens/delete"):
-        $router->getRoute("Bien", "delete");
-        break;
-      default:
-        throw new Exception("La route est inconnue en méthode POST.");
-    }
+  switch (true) {
+    case ($uri === "/"):
+      $router->getRoute("Bien", "index");
+      break;
+    case ($uri === "/bien"):
+      $router->getRoute("Bien", "show",);
+      break;
+    case ($uri === "/biens/add"):
+      if($method === "GET") $router->getRoute("Bien", "add");
+      if($method === "POST") $router->getRoute("Bien", "push");
+      break;
+    case ($uri === "/bien/update/done"):
+      $router->getRoute("Bien", "updateDone");
+      break;
+    case ($uri === "/bien/update"):
+      $router->getRoute("Bien", "update");
+      break;
+    case ($uri === "/bien/update/save"):
+      $router->getRoute("Bien", "updateIntoBDD");
+      break;
+    case ($uri === "/biens/delete"):
+      $router->getRoute("Bien", "delete");
+      break;
+    default:
+      throw new Exception("La route n'existe pas.");
   }
 } catch (Exception $e) {
-  echo "Erreur 404";
+  die("Erreur 404");
 }
 
 // $bien::add(

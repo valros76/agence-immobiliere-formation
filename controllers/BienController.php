@@ -57,7 +57,7 @@ class BienController
       nb_beds: $nb_beds,
       nb_bathrooms: $nb_bathrooms,
       equipments: $equipments
-    ) != false) {
+    )) {
       header("Location:/");
       exit;
     } else {
